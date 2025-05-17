@@ -1,0 +1,19 @@
+services:
+  frontend:
+    image: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/app/frontend
+      - /app/frontend/node_modules         #unbinding node modules in container
+
+  fastapi:
+    image: fastapi
+    build:
+      context: ./fastapi
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
